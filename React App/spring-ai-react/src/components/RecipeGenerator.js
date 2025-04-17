@@ -17,7 +17,7 @@ function RecipeGenerator() {
         setRecipe('');
 
         try {
-            const url = `http://localhost:8081/recipe-creator?ingredients=${encodeURIComponent(ingredients)}&dietaryRestrictions=${encodeURIComponent(dietaryRestrictions)}&cuisine=${encodeURIComponent(cuisine)}`;
+            const url = `https://springai-backend-baeua7h7buh4bwdt.francecentral-01.azurewebsites.net/recipe-creator?ingredients=${encodeURIComponent(ingredients)}&dietaryRestrictions=${encodeURIComponent(dietaryRestrictions)}&cuisine=${encodeURIComponent(cuisine)}`;
             const response = await fetch(url);
             const data = await response.text();
             setRecipe(data);

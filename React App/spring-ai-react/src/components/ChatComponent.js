@@ -12,7 +12,7 @@ function ChatComponent() {
         setChatResponse('');
 
         try {
-            const response = await fetch(`http://localhost:8081/ask-ai?prompt=${encodeURIComponent(prompt)}`);
+            const response = await fetch(`https://springai-backend-baeua7h7buh4bwdt.francecentral-01.azurewebsites.net/ask-ai?prompt=${encodeURIComponent(prompt)}`);
             const data = await response.text();
             setChatResponse(data);
         } catch (error) {
