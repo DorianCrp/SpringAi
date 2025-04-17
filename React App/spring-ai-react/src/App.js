@@ -1,23 +1,56 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import ChatComponent from './components/ChatComponent';
+import RecipeGenerator from './components/RecipeGenerator';
 
 function App() {
+  const [activeTab, setActiveTab] = useState('chat');
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="App" style={{ textAlign: 'center', padding: '20px' }}>
+      <h1>🧠 AI Playground</h1>
+
+      <div style={{ marginBottom: '20px' }}>
+        <button
+          className={activeTab === 'chat' ? 'active' : ''}
+          onClick={() => handleTabChange('chat')}
+          style={{
+            padding: '10px 20px',
+            marginRight: '10px',
+            backgroundColor: activeTab === 'chat' ? '#007bff' : '#f0f0f0',
+            color: activeTab === 'chat' ? '#fff' : '#000',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer'
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          💬 Chat with AI
+        </button>
+
+        <button
+          className={activeTab === 'recipe-generator' ? 'active' : ''}
+          onClick={() => handleTabChange('recipe-generator')}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: activeTab === 'recipe-generator' ? '#007bff' : '#f0f0f0',
+            color: activeTab === 'recipe-generator' ? '#fff' : '#000',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer'
+          }}
+        >
+          🍲 Generate a Recipe
+        </button>
+      </div>
+
+      <div>
+        {activeTab === 'chat' && <ChatComponent />}
+        {activeTab === 'recipe-generator' && <RecipeGenerator />}
+      </div>
     </div>
   );
 }
