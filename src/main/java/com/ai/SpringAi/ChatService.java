@@ -5,7 +5,6 @@ import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.mistralai.MistralAiChatOptions;
 import org.springframework.ai.mistralai.api.MistralAiApi;
-import org.springframework.messaging.Message;
 import org.springframework.stereotype.Service;
 
 @Service
