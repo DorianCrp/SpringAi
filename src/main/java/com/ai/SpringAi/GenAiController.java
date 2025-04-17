@@ -6,10 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GenAiController {
-    ChatService chatService;
+    private final ChatService chatService;
+    private final RecipeService recipeService;
 
-    public GenAiController(ChatService chatService) {
+    public GenAiController(ChatService chatService, RecipeService recipeService) {
         this.chatService = chatService;
+        this.recipeService = recipeService;
     }
 
     @GetMapping("ask-ai")
@@ -21,4 +23,10 @@ public class GenAiController {
     public String getResponseOptions(@RequestParam String prompt) {
         return chatService.getResponseOptions(prompt);
     }
+
+    @GetMapping("recipe-creator")
+    public String recipeCreator(@RequestParam String ingredients, @RequestParam(defaultValue = "any") String cuisine, @RequestParam(defaultValue = "") String dietaryRestrictions){
+        return recipeService.createRecipe(ingredients, cuisine, dietaryRestrictions);
+    }
+
 }
